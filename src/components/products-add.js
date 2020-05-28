@@ -12,19 +12,22 @@ export default class AddProduct extends Component {
 
     this.state = {
       name: "",
-      price: ""
+      price: "",
+      error: ""
     };
   }
 
   onChangeName(e) {
     this.setState({
-      name: e.target.value
+      name: e.target.value,
+      error: ""
     });
   }
 
   onChangePrice(e) {
     this.setState({
-      price: e.target.value
+      price: e.target.value,
+      error: ""
     });
   }
 
@@ -40,13 +43,12 @@ export default class AddProduct extends Component {
           name: response.data.name,
           price: response.data.price
         });
-        console.log(response.data);
         toast("Product created successfully!");
+        this.props.history.push('/products');
       })
       .catch(e => {
-        console.log(e);
+        this.setState({error: e.message});
       });
-      this.props.history.push('/products');
   }
 
   newProduct() {
@@ -57,9 +59,13 @@ export default class AddProduct extends Component {
   }
 
   render() {
+    const { error } = this.state;
     return (
       <div className="submit-form">
           <div>
+            <div className="alert alert-danger" style={{display: error ? "" : "none"}}>
+              {error}
+            </div>
             <div className="form-group">
               <label htmlFor="name">Product Name</label>
               <input

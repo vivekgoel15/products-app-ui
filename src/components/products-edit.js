@@ -15,7 +15,7 @@ export default class EditProduct extends Component {
         name: "",
         price: 0.0
       },
-      message: ""
+      error: ""
     };
   }
 
@@ -24,6 +24,7 @@ export default class EditProduct extends Component {
   }
 
   onChangeName(e) {
+    this.setState({error: ""});
     const name = e.target.value;
 
     this.setState(function(prevState) {
@@ -37,6 +38,7 @@ export default class EditProduct extends Component {
   }
 
   onChangePrice(e) {
+    this.setState({error: ""});
     const price = e.target.value;
     
     this.setState(prevState => ({
@@ -64,26 +66,23 @@ export default class EditProduct extends Component {
     ProductService.update(
       this.state.currentProduct._id,
       this.state.currentProduct
-    )
-      .then(response => {
-        console.log(response.data);
-        this.setState({
-          message: "The product was updated successfully!"
-        });
+    ).then(response => {
         toast("Product updated successfully!");
-      })
-      .catch(e => {
-        console.log(e);
-      });
-      this.props.history.push('/products');
+        this.props.history.push('/products');
+    }).catch(e => {
+      this.setState({error: e.message});
+      console.log(e);
+    });
   }
 
   render() {
-    const { currentProduct } = this.state;
+    const { currentProduct, error } = this.state;
     return (
       <div>
           <div className="edit-form">
-            <h4>Product</h4>
+            <div className="alert alert-danger" style={{display: error ? "" : "none"}}>
+              {this.state.error}
+            </div>
             <form>
               <div className="form-group">
                 <label htmlFor="name">Product Name</label>

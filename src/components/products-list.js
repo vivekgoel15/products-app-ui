@@ -78,7 +78,7 @@ export default class ProductList extends Component {
                     products.map((product, index) => (
                         <tr>
                             <td>{ product.name }</td>
-                            <td><CurrencyFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'₹'} /></td>
+                            <td><CurrencyFormat value={product.price?product.price:0.0} displayType={'text'} thousandSeparator={true} prefix={'₹'} /></td>
                             <td>
                                 <button key={index} data-item={product._id} onClick={() => { this.props.history.push('/products/'+product._id) }} class="btn-primary">Edit</button>
                             </td>
