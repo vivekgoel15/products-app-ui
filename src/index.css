@@ -1,5 +1,6 @@
-body {
+html, body {
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +11,65 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.card {
+  border-radius: 20px;
+  background: #eeeeee;
+  box-shadow: 20px 20px 60px #cacaca, -20px -20px 60px #ffffff;
+  border: none
+}
+
+.card img {
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d6d6d6, #ffffff);
+  box-shadow: 20px 20px 60px #cacaca, -20px -20px 60px #ffffff
+}
+
+.neo-button {
+  width: 40px;
+  height: 40px;
+  outline: 0 !important;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d6d6d6, #ffffff);
+  box-shadow: 20px 20px 60px #cacaca, -20px -20px 60px #ffffff
+}
+
+.neo-button:active {
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d6d6d6, #ffffff);
+  box-shadow: inset 20px 20px 60px #cacaca, inset -20px -20px 60px #ffffff
+}
+
+.fa-facebook {
+  color: #3b5998
+}
+
+.fa-linkedin {
+  color: #0077b5
+}
+
+.fa-google {
+  color: #dc4e41
+}
+
+.fa-youtube {
+  color: #cd201f
+}
+
+.fa-twitter {
+  color: #55acee
 }
